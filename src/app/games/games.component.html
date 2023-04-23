@@ -1,0 +1,89 @@
+<div class="outer-cont ">
+<div class="wrapper">
+    <div class="page_categories" >
+        <div class="fighting_games gallery"(click)="changeFolk()">
+            <h1><i class="fa fa-rocket" aria-hidden="true"></i> Folk Games</h1>
+        </div>
+        <div class="sports_games gallery" (click)="changeSport()">
+            <h1><i class="fa fa-volleyball" aria-hidden="true"></i> Sports Games</h1>
+        </div>
+        <div class="girls_games gallery" (click)="changeGirl()">
+            <h1><i class="fa fa-venus" aria-hidden="true"></i> Girls Games</h1>
+        </div>
+        <div class="racing_games gallery" (click)="changeRacing()">
+            <h1><i class="fa-solid fa-car"></i> Racing Games</h1>
+        </div>
+        <div class="RBG_games gallery" (click)="changeAll()">
+            <h1><i class="fa fa-th-list" aria-hidden="true"></i> ALL</h1>
+        </div>
+    </div>
+
+    <!-- 	POPULAR SECTION -->
+    <div class="popular_games" [ngSwitch]="games">
+        <div class="sports popular-card" *ngSwitchCase="'Sport'">
+            <img class="img_container" src="https://img.huffingtonpost.com/asset/55ad22d62a000028007af9e5.jpeg?ops=scalefit_720_noupscale" alt="">
+            <h4 class="game_title">FIFA16</h4>
+            <button class="download_button" href="#">
+                <i class="fa-solid fa-circle-play"></i> Play Now
+            </button>
+        </div>
+        <div class="girls popular-card" *ngSwitchCase="'Girl'">
+            <img class="img_container" src="https://m.media-amazon.com/images/M/MV5BODEzMmIxOGMtY2RhYS00YTFiLThkZmYtMDlmZGJlYzg0NWEzXkEyXkFqcGdeQXVyNjk1Njg5NTA@._V1_UX182_CR0,0,182,268_AL_.jpg" alt="">
+            <h4 class="game_title">Princess Mulan</h4>
+            <button class="download_button" href="#">
+                <i class="fa-solid fa-circle-play"></i> Play Now
+            </button>
+        </div>
+        <div class="racing popular-card" *ngSwitchCase="'Racing'">
+            <img class="img_container" src="https://images-na.ssl-images-amazon.com/images/I/81mE8WEnsAL._SX342_.jpg" alt="">
+            <h4 class="game_title">Need for Speed</h4>
+            <button class="download_button" href="#">
+                <i class="fa-solid fa-circle-play"></i> Play Now
+            </button>
+        </div>
+        <div class="fighting popular-card" *ngSwitchCase="'Folk'">
+            <img class="img_container" src="https://source.unsplash.com/NqFfiZzGyUs" alt="">
+            <h4 class="game_title">Tic tac toe</h4>
+            <button class="download_button" routerLink="/Tic-Tac-Toe">
+                <i class="fa-solid fa-circle-play"></i> Play Now
+            </button>
+        </div>
+        <div class="popular_games" *ngSwitchCase="'ALL'">
+            <div class="sports popular-card" >
+                <img class="img_container" src="https://img.huffingtonpost.com/asset/55ad22d62a000028007af9e5.jpeg?ops=scalefit_720_noupscale" alt="">
+                <h4 class="game_title">FIFA16</h4>
+                <button class="download_button" href="#">
+                    <i class="fa-solid fa-circle-play"></i> Play Now
+                </button>
+            </div>
+            <div class="girls popular-card" >
+                <img class="img_container" src="https://m.media-amazon.com/images/M/MV5BODEzMmIxOGMtY2RhYS00YTFiLThkZmYtMDlmZGJlYzg0NWEzXkEyXkFqcGdeQXVyNjk1Njg5NTA@._V1_UX182_CR0,0,182,268_AL_.jpg" alt="">
+                <h4 class="game_title">Princess Mulan</h4>
+                <button class="download_button" href="#">
+                    <i class="fa-solid fa-circle-play"></i> Play Now
+                </button>
+            </div>
+            <div class="racing popular-card" >
+                <img class="img_container" src="https://images-na.ssl-images-amazon.com/images/I/81mE8WEnsAL._SX342_.jpg" alt="">
+                <h4 class="game_title">Need for Speed</h4>
+                <button class="download_button" href="#">
+                    <i class="fa-solid fa-circle-play"></i> Play Now
+                </button>
+            </div>
+            <div class="fighting popular-card" >
+                <img class="img_container" src="https://source.unsplash.com/NqFfiZzGyUs" alt="">
+                <h4 class="game_title">Tic tac toe</h4>
+                <button class="download_button" routerLink="/Tic-Tac-Toe">
+                    <i class="fa-solid fa-circle-play"></i> Play Now
+                </button>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+<!-- FOLLOW -->
+<a class="Follow" routerLink="/home"></a>
+</div>

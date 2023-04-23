@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgb(220, 20, 60,0.6);
+  -webkit-text-size-adjust:none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  width: 100%;
+  background: #fff;
+  color: #4a5568;
+  font-size: 62.5%;
+  font-variant-ligatures: normal;
+  font-kerning: normal;
+  overflow-x: hidden;
+  font-family: 'Questrial', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;    
+}
+
+p, span, a, div, input {
+  font-family: inherit;
+  font-size: 16px;
+}
+h1, h2, h3, h4 {
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  font-size: inherit;
+  color: inherit;
+}
+    /* Flex area */
+
+    .row {
+      display:-ms-flexbox;
+      display:flex;
+    }
+
+    /* Flex end */
+
+    .side-header {
+        position: fixed;
+        margin-top: 40px;
+        margin-left: 10px;
+        padding-top: 50px;
+        padding-left: 10px;
+      left: 5px;
+      width: 20%;
+      height: 100vh;
+      overflow-x: hidden;
+      background: #edf2f7;
+      z-index: 2;
+    }
+    .menu-open .side-header {
+            z-index: 0;
+            width: 0%;
+            visibility: hidden;
+            opacity: 0;
+    }
+      .navbar-side {
+        margin-top: 2rem;
+        height: 450px;
+        position: relative;
+        width: 100%;
+      }
+        .logo {
+          font-size: 35px;
+          font-weight: bolder;
+        }
+        .navbar-side ul li {
+          width: 100%;
+          padding: 4px 1em;
+          margin-bottom: 3px;
+          display: block;
+          border-radius: 3px;
+          transition: background 0.3s ease-in-out;
+        }
+          .navbar-side ul li:hover, .navbar-side ul li.active {
+            background: rgb(255,255,255,0.7);
+          }
+        .bottom {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+        }
+          .navbar-side a {
+            font-weight: bold;
+            font-size: 14px;
+            position: relative;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+          }
+            .navbar-side ul li a .svg-space {
+              width: 60px;
+            }
+              .navbar-side ul li a .svg-space svg {
+                width: 40px;
+                height: 40px;
+                margin-bottom: -12px;
+              }
+        .footer {
+          position: absolute;
+          border: 0;
+          left: 0;
+          padding: 0 2rem;
+          margin: 2rem 0;
+        }
+    .menu-open .content-wrapper, .menu-open .top-header {
+      width: 100%;
+    }
+      .top-header .menu-btn, .top-header .icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+        cursor: pointer;
+        padding: 12px;
+        transition: background 0.3s ease-in-out;
+      }
+        .top-header .menu-btn:hover {
+          background: #edf2f7;
+        }
+
+          .navbar-top li {
+            display: inline-block;
+            margin-left: 20px;
+          }
+      h2 {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .x{
+        background: rgb(255,255,255,0.7);
+      }

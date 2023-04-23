@@ -1,0 +1,88 @@
+<div class="row">
+	<div id="splash"><img id="welcome" src="assets/EKIDS.png" width=60%></div>
+	</div>
+<div class="container">
+	<div class="myCard">
+	  <div class="row">
+		<div class="col-md-6">
+		  <div class="myLeftCtn">
+			<form class="myForm text-center needs-validation" novalidate (ngSubmit)="onSubmit(form)" #form="ngForm" method="POST">
+			  <header>Create new account</header>
+			  <div class="form-group">
+				<i class="fas fa-user"></i>
+				<input class="myInput" type="text" placeholder="Username" id="username"
+					   required [(ngModel)]="username" name="username" #usernameInput="ngModel"
+					   [ngClass]="{'is-invalid': usernameInput.invalid && usernameInput.touched,
+								   'is-valid': usernameInput.valid && usernameInput.touched}"
+					   minlength="3">
+				<div class="invalid-feedback" *ngIf="usernameInput.invalid && usernameInput.touched">
+				  Please fill out this field with at least 3 characters.
+				</div>
+			  </div>
+  
+			  <div class="form-group">
+				<i class="fas fa-envelope"></i>
+				<input class="myInput" placeholder="Email" type="email" id="email"
+					   required [(ngModel)]="email" name="email" #emailInput="ngModel"
+					   [ngClass]="{'is-invalid': emailInput.invalid && emailInput.touched,
+								   'is-valid': emailInput.valid && emailInput.touched}"
+					   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+				<div class="invalid-feedback" *ngIf="emailInput.invalid && emailInput.touched">
+				  Please fill out this field.
+				</div>
+			  </div>
+  
+			  <div class="form-group">
+				<i class="fas fa-lock"></i>
+				<input class="myInput" type="password" id="password" placeholder="Password"
+					   required [(ngModel)]="password" name="password" #passwordInput="ngModel"
+					   [ngClass]="{'is-invalid': passwordInput.invalid && passwordInput.touched,
+								   'is-valid': passwordInput.valid && passwordInput.touched}"
+					   minlength="6">
+				<div class="invalid-feedback" *ngIf="passwordInput.invalid && passwordInput.touched">
+				  Password must be at least 6 characters long.
+				</div>
+			  </div>
+  
+			  <div class="form-group">
+				<div class="wrapper">
+				  <input type="radio" name="select" id="option-1" value="student" required [(ngModel)]="userType">
+				  <input type="radio" name="select" id="option-2" value="teacher" required [(ngModel)]="userType">
+				  <label for="option-1" class="option option-1">
+					<div class="dot"></div>
+					<span>Student</span>
+				  </label>
+				  <label for="option-2" class="option option-2 valid-feedback">
+					<div class="dot"></div>
+					<span>Teacher</span>
+				  </label>
+				</div>
+				<div class="invalid-feedback" *ngIf="userType==''">
+				  Check if you're Student or Teacher please.
+				</div>
+			  </div>
+			  <div class="form-group" id="age" *ngIf="userType === 'student'">
+				<i class="fas fa-user"></i>
+				<input class="myInput" type="number" placeholder="Age" id="age" min="4" max="12" required [(ngModel)]="age" name="age" #ageInput="ngModel"
+					   [ngClass]="{'is-invalid': ageInput.invalid && ageInput.touched, 'is-valid': ageInput.valid && ageInput.touched}">
+				<div class="invalid-feedback" *ngIf="ageInput.invalid && ageInput.touched">
+					Please fill out this field with a valid age (between 4-12).
+				</div>
+			</div>
+			  <input type="submit" class="butt" value="CREATE ACCOUNT" id="createAccountButton">
+			  <p><a routerLink="/sign-in">Already have an account ?</a></p>
+			</form>
+		  </div>
+		</div>
+			<div class="col-md-6">
+				<div class="myRightCtn">
+					<h6><p><b>E-kids is a platform designed to provide educational content to children in an interactive and engaging way. <br/>
+					It uses technology and multimedia tools to offer learning experiences that are both fun and educational.</b></p></h6>
+					<input type="submit" class="butt" value="SEE MORE">
+					
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>

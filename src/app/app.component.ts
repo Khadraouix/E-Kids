@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'EKIDS';
+  constructor(private router: Router) {}
+
+  isSignInOrSignUpRoute(): boolean {
+    return ['/sign-in', '/sign-up'].includes(this.router.url);
+  }
 }
+

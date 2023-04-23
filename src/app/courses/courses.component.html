@@ -1,0 +1,509 @@
+<body>
+    <div id="cart" class="cart">
+      <div class="plus">
+          <span class="q">{{shared.table.length}}</span>
+      </div>
+      <a routerLink="/my-learning">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-cart-fill" viewBox="0 0 16 16">
+        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+      </svg>
+      </a>
+    </div>
+      
+    <!-- Start Navigation Bar -->
+    <nav class="navbar">
+      <ul class="menu">
+        <li>
+          <a  (click)="changeAll()">All</a>
+        </li>
+        <li>
+          <a (click)="changeMath()">Maths</a>
+        </li>
+        <li>
+          <a (click)="changeScience()">Science</a>
+        </li>
+        <li>
+          <a (click)="changeArabic()">Arabic</a>
+        </li>
+        <li>
+          <a (click)="changeEnglish()">English</a>
+        </li>
+        <li>
+          <a (click)="changeFrench()">French</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- End Navigation Bar -->
+    <div class="wrap">
+      <div class="search">
+         <input type="text" #box (keyup)="resultSearch2(box.value)" class="searchTerm" placeholder="What are you looking for?">
+         <a type="submit" class="searchButton" (click)="resultSearch1(box.value)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+          </a>
+      </div>
+    </div>
+    <div class="cards" [ngSwitch]="course">    
+        <div class="card" *ngSwitchCase="'Math'">
+            <div class="date">
+                <span class="day">7-8</span>
+                <span class="month">Ans</span>
+                <span class="year">2016</span>
+            </div>
+          <div class="card__image-holder">
+            <img class="card__image"/>
+          </div>
+          <div class="card-title">
+            <a *ngIf="!checked" type="button" #box2 class="toggle-info btn" (click)="plusplus(box2)" id="math">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+                <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+              </svg>
+            </a>
+            <a *ngIf="checked" type="button" #box21 class="toggle-info btn--g" (click)="plusplus(box21)" id="math">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+                <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+              </svg>
+            </a>
+            <h2>
+                Maths
+                <small>level</small>
+            </h2>
+        </div>
+          <div class="card-flap flap1">
+            <div class="card-description">
+              This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available etc.
+            </div>
+            <div class="card-flap flap2">
+              <div class="card-actions">
+                <a href="#" class="btn">Read more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" *ngSwitchCase="'All'">
+          <div class="date">
+              <span class="day">12</span>
+              <span class="month">Aug</span>
+              <span class="year">2016</span>
+            </div>
+        <div class="card__image-holder">
+          <img class="card__image" src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Calcul_mental.png?uselang=fr"/>
+        </div>
+        <div class="card-title">
+          <a type="button" #box3 class="toggle-info btn" (click)="plusplus(box3)" id="math1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+              <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+              <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg>
+          </a>
+          <a type="button" #box31 class="toggle-info btn--g" (click)="plusplus(box31)" id="math1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+              <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+              <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg>
+          </a>
+          <h2>
+              Maths
+              <small>level</small>
+          </h2>
+        </div>
+        <div class="card-flap flap1">
+          <div class="card-description">
+            This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available etc.
+          </div>
+          <div class="card-flap flap2">
+            <div class="card-actions">
+              <a href="#" class="btn">Read more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+        <div class="card" *ngSwitchCase="'Math'">
+            <div class="date">
+                <span class="day">12</span>
+                <span class="month">Aug</span>
+                <span class="year">2016</span>
+              </div>
+          <div class="card__image-holder">
+            <img class="card__image"/>
+          </div>
+          <div class="card-title">
+            <a type="button" #box4 class="toggle-info btn" (click)="plusplus(box4)" id="math2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+                <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+              </svg>
+            </a>
+            <a type="button" #box41 class="toggle-info btn--g" (click)="plusplus(box41)" id="math2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+                <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+              </svg>
+            </a>
+            <h2>
+                Math
+                <small>level</small>
+            </h2>
+          </div>
+          <div class="card-flap flap1">
+            <div class="card-description">
+              This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available etc.
+            </div>
+            <div class="card-flap flap2">
+              <div class="card-actions">
+                <a href="#" class="btn">Read more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" *ngSwitchCase="'All'">
+          <div class="date">
+              <span class="day">12</span>
+              <span class="month">Aug</span>
+              <span class="year">2016</span>
+            </div>
+        <div class="card__image-holder">
+          <img class="card__image"/>
+        </div>
+        <div class="card-title">
+          <a type="button" #box5 class="toggle-info btn" id="math3" (click)="plusplus(box5)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+              <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+              <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg>
+          </a>
+          <a type="button" #box51 class="toggle-info btn--g" (click)="plusplus(box51)" id="math3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+              <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+              <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg>
+          </a>
+          <h2>
+              Maths
+              <small>level</small>
+          </h2>
+        </div>
+        <div class="card-flap flap1">
+          <div class="card-description">
+            This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available etc.
+          </div>
+          <div class="card-flap flap2">
+            <div class="card-actions">
+              <a href="#" class="btn">Read more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="card" *ngSwitchCase="'Science'">
+            <div class="date">
+                <span class="day">12</span>
+                <span class="month">Aug</span>
+                <span class="year">2016</span>
+              </div>
+          <div class="card__image-holder">
+            <img class="card__image"/>
+          </div>
+          <div class="card-title">
+            <a type="button" #box6 class="toggle-info btn" id="science" (click)="plusplus(box6)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+                <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+              </svg>
+            </a>
+            <a type="button" #box61 class="toggle-info btn--g" id="science" (click)="plusplus(box61)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+                <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+              </svg>
+            </a>
+            <h2>
+                Science
+                <small>level</small>
+            </h2>
+          </div>
+          <div class="card-flap flap1">
+            <div class="card-description">
+              This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available etc.
+            </div>
+            <div class="card-flap flap2">
+              <div class="card-actions">
+                <a href="#" class="btn">Read more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" *ngSwitchCase="'All'">
+          <div class="date">
+              <span class="day">12</span>
+              <span class="month">Aug</span>
+              <span class="year">2016</span>
+            </div>
+        <div class="card__image-holder">
+          <img class="card__image"/>
+        </div>
+        <div class="card-title">
+          <a type="button" #box7 class="toggle-info btn" id="science1" (click)="plusplus(box7)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+              <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+              <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg>
+          </a>
+          <a type="button" #box71 class="toggle-info btn--g" (click)="plusplus(box71)" id="science1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+              <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+              <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg>
+          </a>
+          <h2>
+            Science
+            <small>level</small>
+        </h2>
+        </div>
+        <div class="card-flap flap1">
+          <div class="card-description">
+            This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available etc.
+          </div>
+          <div class="card-flap flap2">
+            <div class="card-actions">
+              <a href="#" class="btn">Read more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="card" *ngSwitchCase="'Arabic'">
+            <div class="date">
+                <span class="day">12</span>
+                <span class="month">Aug</span>
+                <span class="year">2016</span>
+              </div>
+          <div class="card__image-holder">
+            <img class="card__image"/>
+          </div>
+          <div class="card-title">
+            <a type="button" #box8 class="toggle-info btn" id="arabic" (click)="plusplus(box8)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+                <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+              </svg>
+            </a>
+            <a type="button" #box81 class="toggle-info btn--g" (click)="plusplus(box81)" id="arabic">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+                <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+              </svg>
+            </a>
+            <h2>
+                Arabic
+                <small>level</small>
+            </h2>
+          </div>
+          <div class="card-flap flap1">
+            <div class="card-description">
+              This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available etc.
+            </div>
+            <div class="card-flap flap2">
+              <div class="card-actions">
+                <a href="#" class="btn">Read more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" *ngSwitchCase="'All'">
+          <div class="date">
+              <span class="day">12</span>
+              <span class="month">Aug</span>
+              <span class="year">2016</span>
+            </div>
+        <div class="card__image-holder">
+          <img class="card__image"/>
+        </div>
+        <div class="card-title">
+          <a type="button" #box9 class="toggle-info btn" id="arabic1" (click)="plusplus(box9)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+              <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+              <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg>
+          </a>
+          <a type="button" #box91 class="toggle-info btn--g" (click)="plusplus(box91)" id="arabic1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+              <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+              <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg>
+          </a>
+          <h2>
+            Arabic
+            <small>level</small>
+        </h2>
+        </div>
+        <div class="card-flap flap1">
+          <div class="card-description">
+            This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available etc.
+          </div>
+          <div class="card-flap flap2">
+            <div class="card-actions">
+              <a href="#" class="btn">Read more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="card" *ngSwitchCase="'French'">
+            <div class="date">
+                <span class="day">12</span>
+                <span class="month">Aug</span>
+                <span class="year">2016</span>
+              </div>
+          <div class="card__image-holder">
+            <img class="card__image"/>
+          </div>
+          <div class="card-title">
+            <a type="button" #box10 class="toggle-info btn" id="french" (click)="plusplus(box10)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+                <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+              </svg>
+            </a>
+            <a type="button" #box101 class="toggle-info btn--g" (click)="plusplus(box101)" id="french">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+                <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+              </svg>
+            </a>
+            <h2>
+                French
+                <small>level</small>
+            </h2>
+          </div>
+          <div class="card-flap flap1">
+            <div class="card-description">
+              This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available etc.
+            </div>
+            <div class="card-flap flap2">
+              <div class="card-actions">
+                <a href="#" class="btn">Read more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" *ngSwitchCase="'All'">
+          <div class="date">
+              <span class="day">12</span>
+              <span class="month">Aug</span>
+              <span class="year">2016</span>
+            </div>
+        <div class="card__image-holder">
+          <img class="card__image"/>
+        </div>
+        <div class="card-title">
+          <a type="button" #box11 class="toggle-info btn" id="french1" (click)="plusplus(box11)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+              <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+              <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg>
+          </a>
+          <a type="button" #box111 class="toggle-info btn--g" (click)="plusplus(box111)" id="french1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+              <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+              <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg>
+          </a>
+          <h2>
+            French
+            <small>level</small>
+        </h2>
+        </div>
+        <div class="card-flap flap1">
+          <div class="card-description">
+            This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available etc.
+          </div>
+          <div class="card-flap flap2">
+            <div class="card-actions">
+              <a href="#" class="btn">Read more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="card" *ngSwitchCase="'English'">
+            <div class="date">
+                <span class="day">12</span>
+                <span class="month">Aug</span>
+                <span class="year">2016</span>
+              </div>
+          <div class="card__image-holder">
+            <img class="card__image"/>
+          </div>
+          <div class="card-title">
+            <a type="button" #box13 class="toggle-info btn" id="english" (click)="plusplus(box13)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+                <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+              </svg>
+            </a>
+            <a type="button" #box131 class="toggle-info btn--g" (click)="plusplus(box131)" id="english">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+                <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+              </svg>
+            </a>
+            <h2>
+                English
+                <small>level</small>
+            </h2>
+          </div>
+          <div class="card-flap flap1">
+            <div class="card-description">
+              This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available etc.
+            </div>
+            <div class="card-flap flap2">
+              <div class="card-actions">
+                <a href="#" class="btn">Read more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" *ngSwitchCase="'All'">
+          <div class="date">
+              <span class="day">12</span>
+              <span class="month">Aug</span>
+              <span class="year">2016</span>
+            </div>
+        <div class="card__image-holder">
+          <img class="card__image"/>
+        </div>
+        <div class="card-title">
+          <a type="button"  #box12 class="toggle-info btn" id="english1" (click)="plusplus(box12)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+              <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+              <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg>
+          </a>
+          <a type="button" #box121 class="toggle-info btn--g" (click)="plusplus(box121)" id="english1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+              <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+              <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg>
+          </a>
+          <h2>
+            English
+            <small>level</small>
+        </h2>
+        </div>
+        <div class="card-flap flap1">
+          <div class="card-description">
+            This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available etc.
+          </div>
+          <div class="card-flap flap2">
+            <div class="card-actions">
+              <a href="#" class="btn">Read more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </body>
+      
+      
+      

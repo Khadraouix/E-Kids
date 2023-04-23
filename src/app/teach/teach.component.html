@@ -1,0 +1,61 @@
+<div class="container ">
+<div class="sidebar">
+    <app-sidebar></app-sidebar>    </div>
+    <div class=" .main-content">
+    <form>
+        <div class="col-8 offset-2">
+        <div class="row">
+        <h1 class="form__title"><b>Espace enseignant</b></h1>
+        </div>
+        <div class="row">
+            <div class="col-2 offset-1">
+                <input required #box1 type="text" placeholder={{cours.nom}} class="input" />
+            </div>
+            <div class="col-2">
+                <input required #box2 type="text" placeholder={{cours.chapter}} class="input" />
+            </div>
+            <div class="col-2">
+                <input required #box3 type="number" min="1" max="6" placeholder={{cours.lvl}} class="input" />
+            </div>
+            <div class="col-2">
+                <input required #box4 type="text" placeholder={{cours.img}} class="input" />
+            </div>
+            <div class="col-2">
+                <button (click)="ajout(box1,box2,box3,box4)" class="btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    add
+                </button>
+            </div>
+        </div>
+        </div>
+    </form>
+        <div class="row">
+            <h2>your courses</h2>
+        </div>
+        <div class="row">
+            <div *ngIf="courses.length>0" class="col-8 offset-2 container-courses" style="border:4px solid #007bff;">
+                <div class="cards" >
+                    <div class="card" *ngFor="let item of courses">
+                        <div class="niv"  [ngClass]="{'one':item.lvl==1,'two':item.lvl==2,'three':item.lvl==3,'four':item.lvl==4,'five':item.lvl==5,'six':item.lvl==6}" >
+                            <span class="lvl">{{item.lvl}}</span>
+                        </div>
+                      <div class="card__image-holder">
+                        <img class="card__image"/>
+                      </div>
+                      <div class="card-title">
+                        <h2>
+                            {{item.nom}}
+                            <small>{{item.chapter}}</small>
+                        </h2>
+                        <button class="btn--g">Modify</button>
+                        <button class="btn--r" (click)="remove(box)" #box id={{item.nom}} name={{item.chapter}} value={{item.lvl}}>Delete</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
