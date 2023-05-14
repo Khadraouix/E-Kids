@@ -1,6 +1,8 @@
 import { Component , } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { SharedService } from '../shared.service';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -13,8 +15,8 @@ export class SignInComponent {
   userType: string = "x";
 
 
-  constructor(private http: HttpClient, private router: Router) {}
-
+  constructor(private http: HttpClient, private router: Router,public shared:SharedService) {}
+data:any;
   onSubmit() {
     const body = {
       email: this.email,
@@ -27,6 +29,10 @@ export class SignInComponent {
         if (response.success) {
           localStorage.setItem('userType', this.userType);
           this.router.navigate(['/home']);
+          console.log(response.username,response.email,response.password);
+          this.shared.body.email=response.email;
+          this.shared.body.username=response.username;
+          this.shared.body.password=response.password;
         } else {
           // Show error message if authentication fails
           alert('Invalid email or password');
@@ -38,6 +44,6 @@ export class SignInComponent {
         alert('An error occurred while authenticating. Please try again.');
       }
     );
-  }
+    
 }
-
+}

@@ -5,5 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class SharedService {
   table :string[] =[];
+  body = {
+    email: "",
+    password: "",
+    username: ""
+  };
   constructor() { }
 }

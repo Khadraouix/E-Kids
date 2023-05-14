@@ -4,13 +4,47 @@
     <div class="sidebar">
         <app-sidebar></app-sidebar>    </div>
     <div class="main-content">
-      <img src="assets/EKIDS.png" id="avatar" width="350" draggable="false"/>
+      <div class="container">
 
-      <div id=text>
-        <h1>Building…</h1>
-        <p title="(I guess)">(coming soon)</p>
+        <form class="well form-horizontal" novalidate (ngSubmit)="modify(form)" #form="ngForm" method="POST" id="contact_form">
+    <fieldset>
+    
+    
+    <div class="form-group">
+      <label class="col-md-4 control-label">Email</label>  
+      <div class="input-group">
+      <input  name="email" placeholder={{shared.body.email}} value={{shared.body.email}} [(ngModel)]="email" class="form-control"  type="text">
+        </div>
       </div>
     
-            </div>
+    
+    <div class="form-group">
+      <label class="col-md-4 control-label" >Username</label> 
+        <div class="input-group">
+      <input name="username" placeholder={{shared.body.username}} value={{shared.body.username}} [(ngModel)]="username" class="form-control"  type="text">
+        </div>
+      </div>
+    
+           <div class="form-group">
+      <label class="col-md-4 control-label">password</label>  
+        <div class="input-group">
+            <input name="password" placeholder={{shared.body.password}} value={{shared.body.password}} [(ngModel)]="password" class="form-control"  type="password">
+        </div>
+      </div>
+    
+    
+    
+    <div class="form-group">
+      <label class="col-md-4 control-label"></label>
+      <div class="col-md-4">
+        <input type="submit" class="btn btn-light" value="edit">
+      </div>
+    </div>
+    
+    </fieldset>
+    </form>
+    </div>
+        </div>
+    
   </div>
   

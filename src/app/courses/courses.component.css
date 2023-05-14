@@ -5,17 +5,15 @@
   }
   /* Start Navigation Bar */
   body{
-    padding-top: 90px;
     display: flex;
     flex-direction: column;
     background:radial-gradient(rgb(191, 216, 228) 0%, rgb(31, 173, 255) 100%);
     align-items: center;
     justify-content: center;
-    height: 100vh;
-
+    height: 130vh;
   }
   .navbar {
-    z-index: 1;
+  
     background-color: #0f0101;
     color: #ffffff;
     border-radius: 4px;
@@ -24,6 +22,12 @@
     margin: 20px auto 0;
     padding-left: 100px;
     text-align: center;
+    position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  z-index: 999;
+
   }
   
   .navbar .menu {
@@ -43,10 +47,11 @@
   
   .navbar .menu li {
     flex: 1;
-    display: flex;
+    display: fixed;
     text-align: center;
     margin: 0 10px;
     transition: background-color 0.5s ease;
+    position: relative;
   }    
   nav a {
     display: block;
@@ -60,13 +65,13 @@
     cursor: pointer;
   }
   
-   .search {
-    position: relative;
-    z-index: 2;
-    padding-top: 100px;
+   .search {  
     width: 100%;
-   
-    display: flex;
+       display: flex;
+    position: fixed;
+  top: 10px;
+  left: 0;
+  right: 0;
   }
   
   .searchTerm {
@@ -100,10 +105,12 @@
   /*Resize the wrap to see the search bar change!*/
   .wrap{
     width: 25%;
-    position: absolute;
+    position: fixed;
     top: 15%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 999;
+
   }
 .date {
     border-radius: 15px;
@@ -122,13 +129,6 @@
     font-weight: 700;
     font-size: 24px;
     text-shadow: 2px 3px 2px rgba(black, 0.18);
-  }
-  .date .month {
-    text-transform: uppercase;
-  }
-  .date .month,
-  .date .year {
-    font-size: 12px;
   }
 a.btn {
   background: #007bff;
@@ -192,25 +192,29 @@ a.btn--g:active {
   transition: all 0.025s 0s ease-out;
 }
 div.cards {
-  margin: 80px auto;
-  max-width: 960px;
+  margin-top: 20px;
+  max-width: 900px;
   text-align: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* set 3 cards per row */
+  gap: 20px; /* add some spacing between cards */
 }
+
 div.card {
-    border-radius: 15px;
+  border-radius: 15px;
   background: #ffffff;
-  display: inline-block;
-  margin: 8px;
-  max-width: 300px;
+  display: grid;
   perspective: 1000;
   position: relative;
-  text-align: left;
+  text-align: center;
   transition: all 0.3s 0s ease-in;
-  width: 300px;
-  z-index: 1;
+  margin: 20px;
+  width: 250px;
 }
+
+
+
 div.card img {
-    
   max-width: 300px;
 }
 div.card .card__image-holder {

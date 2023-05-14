@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sign-up',
@@ -34,12 +35,28 @@ export class SignUpComponent {
         (response: any) => {
           console.log(response);
           if (response.success) {
-            console.log('User created successfully');
+            Swal.fire({
+              title: 'User Created successfully.',
+              width: 600,
+              padding: '3em',
+              color: '#716add',
+              background: '#fff url(/images/trees.png)',
+              backdrop: `
+                rgba(0,0,123,0.4)
+                url("/images/nyan-cat.gif")
+                left top
+                no-repeat
+              `
+            })            
             this.router.navigate(['/sign-in']);
 
           } else {
-            console.log('Failed to create user');
-          }
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'You already have an account!',
+              footer: '<a href="">Why do I have this issue?</a>'
+            })          }
         },
         (error) => {
           console.log('An error occurred:', error);

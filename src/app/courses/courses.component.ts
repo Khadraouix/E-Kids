@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from '../shared.service';
 import { ToastrService } from 'ngx-toastr';
+import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.css']
 })
-export class CoursesComponent {
+export class CoursesComponent implements OnInit{
 course :String ="All";
 rm : boolean=false;
 checked:boolean=false;
@@ -17,23 +19,31 @@ ok :Boolean=false;
 x:number=0;
 searchResult=document.getElementById("s") as HTMLInputElement;
 xx=document.getElementById("math") as HTMLAnchorElement;
-constructor(public shared:SharedService,private toastr: ToastrService){
+
+courses: any[] = [];
+body = {
+  email: "",
+  password: "",
+  username: ""
+};
+localStorageData: any;
+constructor(public shared:SharedService,private toastr: ToastrService,private http: HttpClient){
 }
 
 changeMath(){
-this.course="Math";
+this.course="MATH";
 }
 changeScience(){
-this.course="Science";
+this.course="SCIENCE";
 }
 changeFrench(){
-this.course="French";
+this.course="FRENSH";
 }
 changeEnglish(){
-this.course="English";
+this.course="ENGLISH";
 }
 changeArabic(){
-this.course="Arabic";
+this.course="ARABIC";
 }
 changeAll(){
 this.course="All"
@@ -41,13 +51,13 @@ this.course="All"
 resultSearch1(val:string){
 if(val!=null){
   if(val==="maths" ||val==="Maths" ||val==="math" ||val==="Math" ||val==="MATH"){
-  this.course="Math";
+  this.course="MATH";
   }
   if(val==="Science" ||val==="Sciences" ||val==="science" ||val==="Science" ||val==="SCIENCE"){
   this.course="Science";
   }
   if(val==="arabic" ||val==="Arabic" ||val==="ARABIC"){
-  this.course="Arabic";
+  this.course="ARABIC";
   }
   if(val==="french" ||val==="French" ||val==="FRENCH"){
   this.course="French";
@@ -68,13 +78,13 @@ if(val!=null){
 };
 resultSearch2(val:string){
   if(val==="m" ||val==="M"){
-  this.course="Math";
+  this.course="MATH";
   }
   if(val==="S" || val==="s"){
   this.course="Science";
   }
   if(val==="a" ||val==="A"){
-  this.course="Arabic";
+  this.course="ARABIC";
   }
   if(val==="f"||val==="F"){
   this.course="French";
@@ -95,45 +105,67 @@ changeColorGreen(){
 ajouter(){
 this.ok=!this.ok;
 }
-plusplus(box:HTMLAnchorElement){
-if(this.shared.table.length==0){
+plusplus(box:HTMLAnchorElement,id_CR:number){
+
+  if(this.shared.table.length==0){
   this.shared.table.push(box.id);
-  alert(this.shared.table.length);
-  alert(this.shared.table);
 }else{
 for(let i =0; i < this.shared.table.length; i++){
   if(this.shared.table[i]==box.id){
     this.shared.table.splice(i,1)
-    alert(this.shared.table.length);
-    alert(this.shared.table);
     this.checked=true;
     break;
   }
   else{
     this.shared.table.push(box.id);
-    alert(this.shared.table.length);
-    alert(this.shared.table);
     this.checked=false;
     break;
   }
 }
 }
+this.localStorageData = localStorage.getItem('userType');
+var userType=this.localStorageData;
+const data = {
+  email:this.shared.body.email,
+  password: this.shared.body.password,
+  id_C:id_CR,
+};
+console.log(data);
+this.http.post('http://localhost/e-kids/insert_mylearning.php', data).subscribe(
+        (response: any) => {
+          console.log(response);
+          if (response.success) {
+            console.log('course added successfully');
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Failed to add course!',
+              footer: '<a href="">Why do I have this issue?</a>'
+            })          }
+        },
+        error => {
+          console.log('An error occurred:', error);
+          console.log('Response text:', error.error.text);
+
+        }
+      );
 return this.checked;
+
 }
-/*isChecked(box:HTMLAnchorElement):boolean{
-  if(this.table.length==0){
-    this.checked=false;
+
+  ngOnInit() {
+    this.http.get('http://localhost/e-kids/take_courses.php').subscribe(
+  (data: any) => {
+    this.courses= data;
+    console.log( this.courses);
+  },
+  (error: any) => {
+    console.error(error);
   }
-  else{
-  for(let i =0; i < this.table.length; i++){
-    if(this.table[i]==box.id){
-      this.checked=true;
-    }
-    else{
-      this.checked=false;
-    }
+);
+
+  }
 }
-}
-return this.checked;
-}*/
-}
+
+
